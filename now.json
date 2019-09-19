@@ -2,6 +2,6 @@
   "name": "react-serverless-functions-mongoose-mongodb",
   "version": 2,
   "env": {
-    "MONGODB_WDS": "@mongodb-wds"
+    "MONGODB_WDS": "@mongodb_wds"
   }
 }
