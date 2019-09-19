@@ -5,17 +5,20 @@ const mongoose = require('mongoose');
 
 const User = require('../models/user');
 
-mongoose.connect(
-  'mongodb+srv://aaronadler:Brisket12@classedcluster-1-pyyvr.mongodb.net/wds-node-api?retryWrites=true&w=majority',
-  { useUnifiedTopology: true, useNewUrlParser: true }
-);
+const connect = () => {
+  mongoose.connect(process.env.MONGODB_URI, {
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+  });
 
-const db = mongoose.connection;
+  const db = mongoose.connection;
 
-db.on('error', e => console.error('MY ERROR:', e));
-db.once('open', () => console.error('CONNECTED TO DB!'));
+  db.on('error', e => console.error('MY ERROR:', e));
+  db.once('open', () => console.error('CONNECTED TO DB!'));
+};
 
 module.exports = async (req, res) => {
+  connect();
   try {
   	// Find the user by id provided
     const userToDelete = await User.findById(req.body.id);
