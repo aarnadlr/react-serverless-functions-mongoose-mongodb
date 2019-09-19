@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const User = require('../models/user');
 
 const connect = () => {
-  mongoose.connect(process.env.MONGODB_URI, {
+  mongoose.connect(process.env.MONGODB_WDS, {
     useUnifiedTopology: true,
     useNewUrlParser: true
   });
